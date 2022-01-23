@@ -164,7 +164,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     num_mixing_moves = args.mix_moves
-    T = args.T
+    T = args.temp
     temp_cooling_rate = args.cool_rate
     max_iterations = args.max_iterations
     
