@@ -7,15 +7,38 @@ forcing all combinations and finding the fastest way to the solution. So here I'
 
 ------
 
-The Jupyter notebook gives a thorough description of the code and all the aspects and decisions behind the functions and the overall script.
+## Notebook
+- The Jupyter notebook gives a thorough description of the code and all the aspects and decisions behind the functions and the overall script. There are also included explanations about how the Simulation Annealing algorithm works and how the Rubik's cube "simulation" was encoded as matrix manipulations.   
 
-The python code is a script that can be ran in python separately, or on a shell script by giving it the required inputs. The script runs 100 sessions, where each time it mixes the Rubik's cube by the specified number of random moves and tries to solve it with the given parameters `temperature`, `cooling rate` and `maximum number of moves`. The output is the number of cubes that were solved, so the number can be read as percentage of solved cubes, or accuracy of the Simulated Annealing algorithm for the given set-up. The function can be ran from the terminal as:
+## Python Script
+- The python code is a script that can be ran in python separately, or on a shell script by giving it the required inputs. The script runs 100 sessions, where each time it mixes the Rubik's cube by the specified number of random moves and tries to solve it with the given parameters `temperature`, `cooling rate` and `maximum number of moves`. The output is the number of cubes that were solved, so the number can be read as percentage of solved cubes, or accuracy of the Simulated Annealing algorithm for the given set-up. The function can be ran from the terminal as (example values are given):
 ```
 python3 simulated_annealing_rubik_solver.py --mix_moves 4 --temp 2 --cool_rate 0.98 --max_iterations 1000
 ```
+Only `numpy` is required as an external python library. 
+
+
+As the idea is to have a solution for any number of mixing moves, here is a quick example exploring the accuracy of the algorithm, in terms of solved cubes, by varying only `mix_moves`, and the other params are fixed:
+
+**T = 2 , cooling rate = 0.99 , maximum iterations = 500**
+
+| `mix_moves` | Percentage solved cubes |
+|-------------|:-----------------------:|
+| 1           |           100           |
+| 2           |           68            |
+| 3           |           31            |
+| 4           |           18            |
+| 5           |           12            |
+| 6           |            7            |
+| 7           |            3            |
+| 8           |            1            |
+
+The results in the table are stochastic because of the random element of the mixing of the cube, so they can differ when ran again, but not by much. Nevertheless, they show a pattern overall, that with the increasing of the mixing, and thus of complexity, the algorithm becomes less and less accurate.
 
 ------
-My conclusion for this project is that Simulated Annealing is able to solve some Rubik's cubes, if they are a bit simpler, but is not a reliable way of finding the solution to the 
+
+## Contributions
+The task was to explore if Simulated Annealing is a viable way to solve the Rubik's cube. My conclusion for this project is that Simulated Annealing is able to solve some Rubik's cubes, if they are a bit simpler, but is not a reliable way of finding the solution to the 
 problem. It also takes a very large number of moves to reach a solution, more than if more conventional algorithms are used. So overall it's a fun way of approaching the problem, 
 but better and faster methods exist, and it doesn't seem to improve on any aspect, other than maybe the complexity of coding the solution.
 
